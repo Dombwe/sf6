@@ -116,5 +116,11 @@ class TodoController extends AbstractController
     public function multiplication($entier1, $entier2){
         $resultat = $entier1 * $entier2;
     }
+
+
+    #[Route('/template', name: 'template')]
+    public function template() {
+        return $this->render('template.html.twig');
+    }
 }
 

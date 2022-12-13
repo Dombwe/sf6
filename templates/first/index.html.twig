@@ -1,0 +1,13 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}{{ firstname }} {{ name }}{% endblock %}
+
+{% block PageTitle %}
+    Hello FirstController!
+{% endblock %}
+
+{% block body %}
+    <h1>With love from {{ firstname | capitalize }} {{ name | capitalize }} </h1>
+    <p>Bonjour Techwall sf6 </p>
+    <p>Mon url absolue est {{ url('first') }} </p>
+{% endblock %}

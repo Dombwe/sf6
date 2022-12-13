@@ -1,0 +1,47 @@
+{% extends "template.html.twig" %}
+
+
+{% block title %}
+  Users
+{% endblock %}
+
+
+{% block PageTitle %}
+    Liste des users
+{% endblock %}
+
+{# inclusion d'un bloc de page #}
+{% block body %}
+
+    {# inclusion d'une portion de page sans traitement metier #}
+    {{ include('fragments/date-jour.html.twig') }}
+
+    {# <div class="alert alert-warning">
+        <a href="{{ path('tab', {nb:7}) }}">Stats table</a>
+    </div> #}
+
+    <table class="table">
+        <tr class="table-active">
+            <td>Firstname</td>
+            <td>Name</td>
+            <td>Age</td>
+            <td>Message</td>
+        </tr>
+
+        {% for user in users %}
+            <tr class="table-{% if loop.index is odd %}danger{% else %}warning{% endif %}">
+                <td>{{ user.firstname }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.age }}</td>
+                <td>
+                    {# inclusion d'une portion de page avec traitement metier #}
+                    {{ 
+                        render(controller('App\\Controller\\FirstController::sayHello', {name: user.name, firstname: user.firstname}))  
+                    }}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+
+{% endblock %}
